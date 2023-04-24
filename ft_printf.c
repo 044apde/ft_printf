@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 04:23:35 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 04:32:02 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,6 @@ int	main(void)
 	printf("[my printf]\n");
 	printf("count: %d\n\n", ft_printf("%c_%d_%s\n", c, d, s));
 	printf("[printf]\n");
-	printf("count: %d\n", printf("%c_%d_%s_%p\n", c, d, s, p));
+	printf("count: %d\n", printf("%c_%d_%s\n", c, d, s));
 	return (0);
 }
