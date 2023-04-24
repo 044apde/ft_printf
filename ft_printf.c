@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 07:27:39 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 08:04:53 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ static int	write_va(char c, va_list *ap)
 		count += ft_putstr(va_arg(*ap, char *));
 	else if (c == 'p')
 		count += ft_putaddr(va_arg(*ap, void *));
-	else if (c == 'd')
+	else if (c == 'd' || c == 'i')
 		count += ft_putnbr(va_arg(*ap, int));
+	else if (c == 'u')
+		count += ft_putunbr(va_arg(*ap, unsigned int));
 	return (count);
 }
 
@@ -96,14 +98,18 @@ int	main(void)
 	int		d;
 	char	*s;
 	int		*p;
+	int		i;
+	unsigned int u;
 
 	c = '0';
-	d = -123;
-	s = "22";
+	d = 123;
+	s = "456";
 	p = &d;
+	i = 789;
+	u = 01234;
 	printf("[my printf]\n");
-	printf("count: %d\n", ft_printf("%c_%d_%s_%p\n", c, d, s, p));
+	printf("count: %d\n", ft_printf("%c_%d_%s_%p_%i_%u\n", c, d, s, p, i, u));
 	printf("\n[printf]\n");
-	printf("count: %d\n", printf("%c_%d_%s_%p\n", c, d, s, p));
+	printf("count: %d\n", printf("%c_%d_%s_%p_%i_%u\n", c, d, s, p, i, u));
 	return (0);
 }
