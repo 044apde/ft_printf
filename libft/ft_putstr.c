@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 07:08:00 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 07:08:08 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 08:19:00 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putstr(char *s)
 {
-	size_t	len;
+	int	len;
 
 	len = ft_strlen(s);
 	while (*s != '\0')
