@@ -6,51 +6,81 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 03:31:56 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 04:23:35 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_writeaddress(void *p)
+size_t	ft_strlen(const char *s)
 {
-	unsigned long long	temp;
-	int					len;
+	size_t	length;
 
-	len = 1;
-	temp = (unsigned long long)p;
-	while (temp / 16 != 0)
-	{
-		temp /= 16;
-		len++;
-	}
-	write(1, "0x", 2);
-	hex_write
-	return (len + 2);
+	length = 0;
+	while (s[length] != 0)
+		++length;
+	return (length);
 }
 
-int	write_va(char c, va_list *ap)
+int ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int ft_putstr(char *s)
+{
+	size_t	len;
+
+	len = ft_strlen(s);
+	while(*s != '\0')
+		write(1, s++, 1);
+	return(len);
+}
+
+int ft_putnbr(int n)
+{
+	int	len;
+
+	len  = 1;
+	if (n == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	else
+	{
+		if (n < 0)
+		{
+			n = n * -1;
+			write(1, "-", 1);
+			++len;
+		}
+		while (n / 10 != 0)
+		{
+			ft_putchar(n % 10 + 48);
+			n /= 10;
+			++len;
+		}
+		ft_putchar(n + 48);
+		return (len);
+	}
+}
+
+static int	write_va(char c, va_list *ap)
 {
 	int		count;
-	char	*str;
 
 	count = 0;
 	if (c == 'c')
-	{
-		ft_putchar_fd((char)va_arg(*ap, int), 1);
-		count++;
-	}
+		count += ft_putchar((char)va_arg(*ap, int));
 	else if (c == 's')
-	{
-		str = ft_itoa(va_arg(*ap, int));
-		ft_putstr_fd(str, 1);
-		count += ft_strlen(str);
-	}
-	else if ('p')
-	{
-		count += ft_writeaddress(va_arg(*ap, void *));
-	}
+		count += ft_putstr(va_arg(*ap, char *));
+	else if (c == 'p')
+		count = 0;
+	else if (c == 'd')
+		count += ft_putnbr(va_arg(*ap, int));
 	return (count);
 }
 
