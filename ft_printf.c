@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 06:01:47 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 06:59:09 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,21 @@ static int	ft_puthex(unsigned long long num)
 {
 	size_t	len;
 	char	*base_hex;
+	unsigned long long	copy;
 
-	len = 0;
+
+	len = 1;
 	base_hex = "0123456789abcdef";
-	while (num / 16 != 0)
-	{
-		ft_putchar(base_hex[num % 16]);
-		num /= 16;
-		++len;
-	}
+	copy = num;
+	if (num >= 16)
+		ft_puthex(num / 16);
 	ft_putchar(base_hex[num % 16]);
-	return (len + 1);
+	while (copy >= 16)
+	{
+		++len;
+		copy /= 16;
+	}
+	return (len);
 }
 
 static int	ft_putaddr(void *p)
