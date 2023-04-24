@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 07:58:07 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 08:19:06 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 08:31:11 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putunbr(unsigned int unbr)
 {
-	int			len;
+	int				len;
 	unsigned int	copy;
 
 	len = 1;

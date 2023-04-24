@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 08:25:35 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 08:31:23 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,30 +99,4 @@ int	ft_printf(const char *fmt, ...)
 	}
 	va_end(ap);
 	return (count);
-}
-
-int	main(void)
-{
-	char	c;
-	int		d;
-	char	*s;
-	int		*p;
-	int		i;
-	char	x;
-	char	X;
-	unsigned int u;
-
-	c = '0';
-	d = 123;
-	s = "456";
-	p = &d;
-	i = 789;
-	u = 01234;
-	x = 'x';
-	X = 'X';
-	printf("[my printf]\n");
-	printf("count: %d\n", ft_printf("%c_%d_%s_%p_%i_%u_%x_%X_%%\n", c, d, s, p, i, u, x ,X));
-	printf("\n[printf]\n");
-	printf("count: %d\n", printf("%c_%d_%s_%p_%i_%u_%x_%X_%%\n", c, d, s, p, i, u, x, X));
-	return (0);
 }
