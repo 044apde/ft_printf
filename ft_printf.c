@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 07:08:25 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 07:27:39 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 static int	ft_puthex(unsigned long long num)
 {
-	size_t	len;
-	char	*base_hex;
+	size_t				len;
+	char				*base_hex;
 	unsigned long long	copy;
-
 
 	len = 1;
 	base_hex = "0123456789abcdef";
