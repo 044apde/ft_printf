@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/01 02:20:46 by marvin            #+#    #+#             */
-/*   Updated: 2023/04/01 16:39:04 by shikim           ###   ########.fr       */
+/*   Created: 2023/04/25 07:07:05 by shikim            #+#    #+#             */
+/*   Updated: 2023/04/25 07:07:11 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_nbrlen(int nbr)
 {
-	int		len_s;
-	int		index;
-	char	*dst;
+	int	len;
 
-	len_s = ft_strlen(s);
-	index = 0;
-	dst = (char *)malloc(len_s + 1);
-	if (dst == 0)
-		return (0);
-	while (index < len_s)
+	len = 0;
+	while (nbr / 10 != 0)
 	{
-		dst[index] = f(index, s[index]);
-		++index;
+		nbr /= 10;
+		++len;
 	}
-	dst[index] = '\0';
-	return (dst);
+	return (len);
 }

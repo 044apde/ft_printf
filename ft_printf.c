@@ -6,76 +6,12 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 06:59:09 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 07:08:25 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-
-int	ft_nbrlen(int nbr)
-{
-	int	len;
-
-	len = 0;
-	while (nbr / 10 != 0)
-	{
-		nbr /= 10;
-		++len;
-	}
-	return (len);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	length;
-
-	length = 0;
-	while (s[length] != 0)
-		++length;
-	return (length);
-}
-
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(char *s)
-{
-	size_t	len;
-
-	len = ft_strlen(s);
-	while (*s != '\0')
-		write(1, s++, 1);
-	return (len);
-}
-
-int	ft_putnbr(int n)
-{
-	int		len;
-	int		copy;
-
-	len = 1;
-	if (n == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
-	if (n < 0)
-	{
-		n = n * -1;
-		write(1, "-", 1);
-		++len;
-	}
-	copy = n;
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + 48);
-	len += ft_nbrlen(copy);
-	return (len);
-}
 
 static int	ft_puthex(unsigned long long num)
 {
