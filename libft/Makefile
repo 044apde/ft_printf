@@ -16,9 +16,6 @@ OBJ_FILES_B = $(SRCS_B:.c=.o)
  
 all : $(NAME)
 
-$(NAME) : $(OBJ_FILES)
-	$(AR) $(ARFLAGS) ../$@ $?
-
 basic_file: $(OBJS_FILES)
 	rm -rf bonus_file
 	$(AR) $(ARFLAGS) $(NAME) $^
@@ -40,5 +37,8 @@ fclean : clean
 re :
 	make fclean
 	make all
+
+$(NAME) : $(OBJ_FILES)
+	$(AR) $(ARFLAGS) $@ $?
 
 .PHONY : all bonus clean fclean re
