@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:33:48 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 09:11:40 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 11:35:36 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/libft.h" 
+# include "libft/libft.h"
 
 int	ft_printf(const char *fmt, ...);
 
