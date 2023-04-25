@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:53:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 08:03:16 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 08:41:21 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_nbrlen(int nbr);
 int		ft_putchar(char c);
 int		ft_putnbr(int n);
 int		ft_putstr(char *s);
-size_t	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 int		ft_putunbr(unsigned int unbr);
 
 #endif
