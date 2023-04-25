@@ -6,14 +6,36 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:31:42 by shikim            #+#    #+#             */
-/*   Updated: 2023/04/25 11:34:10 by shikim           ###   ########.fr       */
+/*   Updated: 2023/04/25 13:34:23 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-static int	ft_puthex(unsigned long long num)
+static int	ft_puthex(unsigned int num, char type)
+{
+	size_t				len;
+	char				*base_hex;
+	unsigned int		copy;
+
+	len = 1;
+	if (type == 'X')
+		base_hex = "0123456789ABCDEF";
+	else
+		base_hex = "0123456789abcdef";
+	copy = num;
+	if (num >= 16)
+		ft_puthex(num / 16, type);
+	ft_putchar(base_hex[num % 16]);
+	while (copy >= 16)
+	{
+		++len;
+		copy /= 16;
+	}
+	return (len);
+}
+
+static int	ft_putaddrhex(unsigned long long num)
 {
 	size_t				len;
 	char				*base_hex;
@@ -23,7 +45,7 @@ static int	ft_puthex(unsigned long long num)
 	base_hex = "0123456789abcdef";
 	copy = num;
 	if (num >= 16)
-		ft_puthex(num / 16);
+		ft_putaddrhex(num / 16);
 	ft_putchar(base_hex[num % 16]);
 	while (copy >= 16)
 	{
@@ -41,7 +63,7 @@ static int	ft_putaddr(void *p)
 	len = 2;
 	addr = (unsigned long long)p;
 	write(1, "0x", 2);
-	len += ft_puthex(addr);
+	len += ft_putaddrhex(addr);
 	return (len);
 }
 
@@ -61,9 +83,9 @@ static int	write_va(char c, va_list *ap)
 	else if (c == 'u')
 		count += ft_putunbr(va_arg(*ap, unsigned int));
 	else if (c == 'x')
-		count += ft_puthex((unsigned long long)va_arg(*ap, int));
+		count += ft_puthex(va_arg(*ap, int), c);
 	else if (c == 'X')
-		count += ft_puthex((unsigned long long)va_arg(*ap, int));
+		count += ft_puthex(va_arg(*ap, int), c);
 	else if (c == '%')
 	{
 		++count;
@@ -76,7 +98,6 @@ int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
 	int		count;
-	int		count_va;
 
 	count = 0;
 	va_start(ap, fmt);
@@ -85,10 +106,7 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%')
 		{
 			++fmt;
-			count_va = write_va(*fmt, &ap);
-			if (count_va < 0)
-				return (-1);
-			count += count_va;
+			count += write_va(*fmt, &ap);
 		}
 		else
 		{
